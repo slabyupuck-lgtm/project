@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ru">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="style.css"><title>Герой 2</title></head>
+<body>
+<header class="navbar"><div class="brand"><img src="img/logo.png" alt="logo"></div><nav class="menu"><a href="index.html">Главная</a></nav></header>
+<main style="padding-top:90px;max-width:1000px;margin:20px auto;text-align:center;">
+  <h1>Герой 2</h1>
+  <div style="max-width:900px;margin:10px auto;border-radius:12px;overflow:hidden;">
+    <img src="heroes/hero2.png" style="width:100%;height:auto;display:block;object-fit:cover;box-shadow:0 20px 60px rgba(0,0,0,0.6)">
+  </div>
+  <section style="text-align:left;margin:20px;padding:20px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:10px;">
+    <h2>Лор и роль</h2>
+    <p>Тёмный демон — поглотитель душ, наносит разрушительный урон в массовых сражениях.</p>
+    <h3>Советы по игре</h3>
+    <ul>
+      <li>Координируйте действия с командой.</li>
+      <li>Следите за позиционированием и таймингом.</li>
+      <li>Адаптируйте сборку под оппонентов.</li>
+    </ul>
+  </section>
+</main>
+<script>
+(function(){
+  const img = document.querySelector('main img');
+  if(img){
+    img.style.transition='transform 0.6s ease, filter 0.6s ease';
+    img.animate([{transform:'translateY(0)'},{transform:'translateY(-8px)'},{transform:'translateY(0)'}],{duration:6000,iterations:Infinity});
+    img.addEventListener('mousemove',function(e){
+      const rect = img.getBoundingClientRect();
+      const x = (e.clientX - rect.left)/rect.width;
+      const y = (e.clientY - rect.top)/rect.height;
+      img.style.transform = 'perspective(900px) rotateX(' + ((0.5-y)*6) + 'deg) rotateY(' + ((x-0.5)*8) + 'deg) scale(1.02)';
+    });
+    img.addEventListener('mouseleave',function(){ img.style.transform='scale(1)'; });
+  }
+})();
+</script>
+</body>
+</html>
